@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Richmond Gian Rabor - Portfolio</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --br-50:  #fefcf9;
+            --br-100: #f9f3eb;
+            --br-200: #f0e3ce;
+            --br-300: #dfc4a0;
+            --br-400: #c9a07a;
+            --br-500: #b07f55;
+            --br-600: #8c6040;
+            --br-700: #6b4528;
+            --br-800: #4e2f14;
+            --cream:  #faf7f2;
+            --white:  #ffffff;
+            --text-dark: #2d1f0f;
+            --text-mid:  #7a5c3e;
+            --text-soft: #a88060;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--text-dark); line-height: 1.6; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 28px; }
+
+        header { background: var(--white); border-bottom: 1.5px solid var(--br-200); position: sticky; top: 0; z-index: 100; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 0; }
+        .logo { font-size: 1.4rem; font-weight: 700; color: var(--br-700); letter-spacing: -0.5px; }
+        .logo span { color: var(--br-400); }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--text-mid); font-weight: 500; font-size: 0.9rem; transition: color 0.2s; display: flex; align-items: center; gap: 6px; }
+        .nav-links a:hover { color: var(--br-600); }
+        .nav-links a i { font-size: 0.8rem; color: var(--br-400); }
+
+        .hero { background: var(--br-100); border-bottom: 2px solid var(--br-200); padding: 5.5rem 0 5rem; text-align: center; }
+        .avatar { width: 88px; height: 88px; border-radius: 50%; background: var(--br-200); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 1.5rem; font-weight: 700; color: var(--br-700); border: 3px solid var(--br-300); }
+        .hero-badge { display: inline-flex; align-items: center; gap: 7px; background: var(--br-200); color: var(--br-700); font-size: 0.75rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 5px 16px; border-radius: 999px; margin-bottom: 1.2rem; }
+        .hero h1 { font-size: 2.8rem; font-weight: 700; color: var(--br-800); margin-bottom: 0.6rem; line-height: 1.2; }
+        .hero-sub { font-size: 1.05rem; color: var(--text-mid); margin-bottom: 2rem; }
+        .hero-meta { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+        .hero-meta span { display: flex; align-items: center; gap: 7px; font-size: 0.875rem; color: var(--text-mid); }
+        .hero-meta i { color: var(--br-400); font-size: 0.95rem; width: 16px; text-align: center; }
+        .btn { display: inline-flex; align-items: center; gap: 8px; background: var(--br-500); color: var(--white); padding: 12px 28px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: background 0.2s, transform 0.2s; }
+        .btn:hover { background: var(--br-600); transform: translateY(-2px); }
+        .btn-outline { display: inline-flex; align-items: center; gap: 8px; background: transparent; border: 2px solid var(--br-300); color: var(--br-600); padding: 10px 26px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.9rem; margin-left: 12px; transition: all 0.2s; }
+        .btn-outline:hover { background: var(--br-200); }
+
+        .section-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--br-400); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 6px; }
+        .section-title { font-size: 1.9rem; font-weight: 700; color: var(--br-800); margin-bottom: 1rem; }
+
+        .about { background: var(--white); padding: 5rem 0; }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+        .about p { color: var(--text-mid); line-height: 1.8; margin-bottom: 1rem; font-size: 0.97rem; }
+        .skill-chip { display: inline-flex; align-items: center; gap: 6px; background: var(--br-100); color: var(--br-700); border: 1px solid var(--br-200); padding: 6px 13px; border-radius: 6px; font-size: 0.82rem; font-weight: 600; margin: 5px 5px 0 0; }
+        .skill-chip i { color: var(--br-500); font-size: 0.85rem; width: 14px; text-align: center; }
+
+        .projects { padding: 5rem 0; }
+        .projects-header { text-align: center; margin-bottom: 3rem; }
+        .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+        .card { background: var(--white); border: 1.5px solid var(--br-200); border-radius: 16px; overflow: hidden; transition: transform 0.25s, box-shadow 0.25s; }
+        .card:hover { transform: translateY(-6px); box-shadow: 0 18px 48px rgba(140,96,64,0.13); }
+
+        .card-top { background: var(--br-100); padding: 1.75rem; border-bottom: 1.5px solid var(--br-200); display: flex; align-items: flex-start; gap: 1rem; }
+        .card-icon { width: 52px; height: 52px; border-radius: 12px; background: var(--br-200); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: var(--br-700); border: 1.5px solid var(--br-300); }
+        .card-top-text { flex: 1; }
+        .card-top-text h3 { font-size: 1.1rem; font-weight: 700; color: var(--br-800); margin-bottom: 0.3rem; }
+        .card-top-text p { font-size: 0.8rem; color: var(--text-soft); }
+        .card-num { font-size: 2rem; font-weight: 800; color: var(--br-200); line-height: 1; }
+
+        .card-body { padding: 1.75rem; }
+        .card-body > p { color: var(--text-mid); font-size: 0.93rem; line-height: 1.7; margin-bottom: 1.25rem; }
+        .features-title { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--br-400); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 6px; }
+        .features { list-style: none; margin-bottom: 1.5rem; }
+        .features li { display: flex; align-items: center; gap: 10px; color: var(--text-mid); font-size: 0.9rem; padding: 5px 0; }
+        .features li i { color: var(--br-400); font-size: 0.85rem; width: 16px; text-align: center; flex-shrink: 0; }
+
+        .divider { height: 1px; background: var(--br-100); margin: 1.25rem 0; }
+        .meta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1.25rem; }
+        .meta-item strong { display: flex; align-items: center; gap: 5px; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-soft); margin-bottom: 2px; font-weight: 700; }
+        .meta-item strong i { font-size: 0.7rem; color: var(--br-400); }
+        .meta-item span { font-size: 0.88rem; color: var(--br-700); font-weight: 600; }
+
+        .tag-row { display: flex; gap: 7px; flex-wrap: wrap; }
+        .tag { display: inline-flex; align-items: center; gap: 5px; background: var(--br-100); color: var(--br-700); border: 1px solid var(--br-200); padding: 4px 11px; border-radius: 5px; font-size: 0.78rem; font-weight: 600; }
+        .tag i { font-size: 0.78rem; color: var(--br-500); }
+
+        .contact { background: var(--br-100); border-top: 2px solid var(--br-200); padding: 5rem 0; text-align: center; }
+        .contact .section-label { justify-content: center; }
+        .contact .section-title { color: var(--br-800); }
+        .contact > .container > p { color: var(--text-mid); margin-bottom: 2rem; font-size: 0.97rem; }
+        .contact-btn { display: inline-flex; align-items: center; gap: 10px; background: var(--br-500); color: var(--white); padding: 13px 28px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: background 0.2s, transform 0.2s; }
+        .contact-btn:hover { background: var(--br-600); transform: translateY(-2px); }
+        .socials { display: flex; justify-content: center; gap: 1.5rem; margin-top: 2.5rem; }
+        .socials a { color: var(--br-400); font-size: 1.4rem; transition: color 0.2s; text-decoration: none; }
+        .socials a:hover { color: var(--br-700); }
+
+        footer { background: var(--white); border-top: 1.5px solid var(--br-200); text-align: center; padding: 1.75rem 0; }
+        footer p { color: var(--text-soft); font-size: 0.85rem; display: flex; align-items: center; justify-content: center; gap: 6px; }
+        footer i { color: var(--br-400); }
+
+        @media (max-width: 700px) {
+            .hero h1 { font-size: 2rem; }
+            .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .hero-meta { gap: 1rem; }
+            .btn-outline { margin-left: 0; margin-top: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <nav>
+            <div class="logo">RG<span>R</span></div>
+            <ul class="nav-links">
+                <li><a href="#about"><i class="fas fa-user"></i>About</a></li>
+                <li><a href="#projects"><i class="fas fa-folder-open"></i>Projects</a></li>
+                <li><a href="#contact"><i class="fas fa-envelope"></i>Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container">
+        <div class="avatar">RGR</div>
+        <div class="hero-badge"><i class="fas fa-graduation-cap"></i>2nd Year Student &bull; Davao Region, PH</div>
+        <h1>Richmond Gian Rabor</h1>
+        <p class="hero-sub">Web Developer &mdash; Building community-focused digital solutions</p>
+        <div class="hero-meta">
+            <span><i class="fas fa-code"></i> PHP &amp; MySQL</span>
+            <span><i class="fas fa-globe"></i> Web Applications</span>
+            <span><i class="fas fa-map-marker-alt"></i> Davao Region, PH</span>
+        </div>
+        <a href="#projects" class="btn"><i class="fas fa-folder-open"></i>View Projects</a>
+        <a href="mailto:richmondrabor2@gmail.com" class="btn-outline"><i class="fas fa-envelope"></i>Email Me</a>
+    </div>
+</section>
+
+<section class="about" id="about">
+    <div class="container">
+        <div class="about-grid">
+            <div>
+                <p class="section-label"><i class="fas fa-user"></i>Who I Am</p>
+                <h2 class="section-title">About Me</h2>
+                <p>I'm a developer passionate about building practical, community-focused web applications that solve real-world problems in Davao Region and beyond.</p>
+                <p>My work combines technical expertise with a commitment to social impact — from animal welfare to disaster response, I build systems that help people when it matters most.</p>
+            </div>
+            <div>
+                <p class="section-label" style="margin-bottom:1rem;"><i class="fas fa-laptop-code"></i>Skills &amp; Technologies</p>
+                <div>
+                    <span class="skill-chip"><i class="fas fa-server"></i>PHP</span>
+                    <span class="skill-chip"><i class="fas fa-code"></i>HTML</span>
+                    <span class="skill-chip"><i class="fas fa-paint-brush"></i>CSS</span>
+                    <span class="skill-chip"><i class="fas fa-database"></i>MySQL</span>
+                    <span class="skill-chip"><i class="fas fa-globe"></i>Web Apps</span>
+                    <span class="skill-chip"><i class="fas fa-sitemap"></i>System Design</span>
+                    <span class="skill-chip"><i class="fas fa-lightbulb"></i>Problem Solving</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="projects" id="projects">
+    <div class="container">
+        <div class="projects-header">
+            <p class="section-label" style="justify-content:center;"><i class="fas fa-folder-open"></i>What I've Built</p>
+            <h2 class="section-title">Featured Projects</h2>
+        </div>
+        <div class="cards">
+
+            <div class="card">
+                <div class="card-top">
+                    <div class="card-icon"><i class="fas fa-paw"></i></div>
+                    <div class="card-top-text">
+                        <h3>NewVisayasPetConnect</h3>
+                        <p>Street-to-Home Rescue, Adoption &amp; Donation System</p>
+                    </div>
+                    <div class="card-num">01</div>
+                </div>
+                <div class="card-body">
+                    <p>A web-based management system for Barangay New Visayas, Panabo City, streamlining animal rescue, pet adoption, and donation efforts through a centralized digital platform.</p>
+                    <p class="features-title"><i class="fas fa-star"></i>Key Features</p>
+                    <ul class="features">
+                        <li><i class="fas fa-map-pin"></i>Report stray or lost animals</li>
+                        <li><i class="fas fa-heart"></i>Manage pet adoption profiles</li>
+                        <li><i class="fas fa-donate"></i>Track donations transparently</li>
+                        <li><i class="fas fa-tachometer-alt"></i>Streamlined admin dashboard</li>
+                    </ul>
+                    <div class="divider"></div>
+                    <div class="meta-grid">
+                        <div class="meta-item"><strong><i class="fas fa-code"></i>Framework</strong><span>PHP, HTML/CSS</span></div>
+                        <div class="meta-item"><strong><i class="fas fa-database"></i>Database</strong><span>MySQL</span></div>
+                        <div class="meta-item"><strong><i class="fas fa-layer-group"></i>Type</strong><span>Web App</span></div>
+                        <div class="meta-item"><strong><i class="fas fa-bullseye"></i>Goal</strong><span>Efficiency</span></div>
+                    </div>
+                    <div class="tag-row">
+                        <span class="tag"><i class="fas fa-server"></i>PHP</span>
+                        <span class="tag"><i class="fas fa-code"></i>HTML/CSS</span>
+                        <span class="tag"><i class="fas fa-database"></i>MySQL</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-top">
+                    <div class="card-icon"><i class="fas fa-water"></i></div>
+                    <div class="card-top-text">
+                        <h3>Flood Tracker &amp; Relief Distribution</h3>
+                        <p>Emergency Response Web System</p>
+                    </div>
+                    <div class="card-num">02</div>
+                </div>
+                <div class="card-body">
+                    <p>A digital platform that enhances community resilience by streamlining flood reporting and aid allocation during emergencies, replacing manual processes with a reliable interface.</p>
+                    <p class="features-title"><i class="fas fa-star"></i>Key Features</p>
+                    <ul class="features">
+                        <li><i class="fas fa-satellite-dish"></i>Real-time flood monitoring</li>
+                        <li><i class="fas fa-bullhorn"></i>Official announcements &amp; alerts</li>
+                        <li><i class="fas fa-box-open"></i>Transparent relief distribution</li>
+                        <li><i class="fas fa-users"></i>Community information hub</li>
+                    </ul>
+                    <div class="divider"></div>
+                    <div class="meta-grid">
+                        <div class="meta-item"><strong><i class="fas fa-code"></i>Language</strong><span>PHP, HTML/CSS</span></div>
+                        <div class="meta-item"><strong><i class="fas fa-tools"></i>Tools</strong><span>MySQL</span></div>
+                        <div class="meta-item"><strong><i class="fas fa-layer-group"></i>Type</strong><span>Web App</span></div>
+                        <div class="meta-item"><strong><i class="fas fa-bullseye"></i>Goal</strong><span>Efficiency</span></div>
+                    </div>
+                    <div class="tag-row">
+                        <span class="tag"><i class="fas fa-server"></i>PHP</span>
+                        <span class="tag"><i class="fas fa-code"></i>HTML/CSS</span>
+                        <span class="tag"><i class="fas fa-database"></i>MySQL</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="contact" id="contact">
+    <div class="container">
+        <p class="section-label"><i class="fas fa-paper-plane"></i>Get in Touch</p>
+        <h2 class="section-title">Let's Connect</h2>
+        <p>Have a project idea or want to collaborate? Feel free to reach out!</p>
+        <a href="mailto:richmondrabor2@gmail.com" class="contact-btn">
+            <i class="fas fa-envelope"></i>richmondrabor2@gmail.com
+        </a>
+        <div class="socials">
+            <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <p><i class="fas fa-map-marker-alt"></i>&copy; 2026 Richmond Gian Rabor &mdash; Built with passion in Davao Region, Philippines</p>
+    </div>
+</footer>
+
+</body>
+</html>
